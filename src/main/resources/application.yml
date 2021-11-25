@@ -1,3 +1,41 @@
 server:
-#赋值时注意冒号后的空格
+# 赋值时注意冒号后的空格
     port: 8080
+
+# 日志设置 内容会被logback-spring.xml覆盖 logback可以从中取值
+logging:
+  level:
+  # 设置不同模块的打印级别
+  # 因为包名中.字符是关键字，所以最好用'[]'包裹
+    '[org.springframework]': ERROR
+    '[com.sdmap.*]': DEBUG  
+  # 设置打印格式,分别设置命令行和输出文件的打印格式
+  pattern:
+   console: "%d{HH:mm:ss.SSS} [%t] %-5level %logger{36}:%L - %msg%n"
+   file: "%d %p %c{1.}:%L [%t] %m%n"
+  # 设置日志滚动规则
+  logback:
+    rollingpolicy:
+      # 滚动文件的文件名格式
+      file-name-pattern: tmp/logs/app-%d{yyyy-MM-dd}.%i.log
+      # 滚动文件的最大数量
+      max-history: 30
+      # 单个文件大小上限
+      max-file-size: 1MB
+      # 总日志文件大小上限
+      total-size-cap: 30MB
+      # 每次运行是否清空之前的日志，生产环境建议为true，调试时建议为false
+      clean-history-on-start: true
+        
+  # 设置输出文件路径和目录
+  file: 
+    name: tmp/logs/app.log
+
+      
+    
+  
+# 设置控制台输出时是否采用颜色区分级别(需要控制台支持)
+spring:
+  output:
+    ansi:
+        enabled: DETECT

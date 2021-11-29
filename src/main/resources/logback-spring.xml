@@ -71,6 +71,7 @@
             <!-- 新启动时会清空maxHistory之前的历史日志,否则一些程序由于运行时间短可能永远不会触发运行时间达到maxHistory时的滚动导致日志堆积-->
             <cleanHistoryOnStart>true</cleanHistoryOnStart>
         </rollingPolicy>
+        <!-- 3.end.基于固定时间和文件大小的RollingPolicy,会在固定时间内,根据文件大小约束生成新的日志输出-->
     </appender>
 
     <!-- appender要挂到logger下,name设置包名,level设置最低输出级别,additivity默认是true-->

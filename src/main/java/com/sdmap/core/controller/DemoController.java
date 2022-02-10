@@ -1,5 +1,7 @@
 package com.sdmap.core.controller;
 
+import com.dqs.log4jslf4jadapter.logsomething;
+
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -21,6 +23,7 @@ public class DemoController {
         log.info("This is an info message");
         log.warn("This is a warn message");
         log.error("This is an error message");        
+        logsomething.hellolog();
 
         return "Hello" + who;
     }
